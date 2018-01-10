@@ -1,0 +1,42 @@
+﻿<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<div ng-app="biblioApp" ng-controller="AddProdCtrl">
+    <form name="AddProdForm">
+        <div>
+            <div class="form-group">
+                <label for="np">Nom du produit</label>
+                <input type="text" class="form-control" ng-model="Pname" name="Pname" required  />
+                <span class="help-block">Entrez le nom du produit {{Pname}}</span>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="p">Prix Unitaire</label>
+                <input name="Pprix" type="number" class="form-control" ng-model="Pprix" step="0.01" required />
+                <span class="help-block">Entre le prix pour unité {{Pprix}}</span>
+               
+
+            </div>
+
+            <div class="form-inline">
+                <label for="u">Unité</label> 
+                <input class="form-control" type="number" ng-model="Punit" step="0.01" required />
+                <select class="form-control" ng-model="Punitname" ng-options="opt for opt in options"></select>
+                
+                <span class="help-block">Entrez l'unité à vendre {{Punit + Punitname}} </span>
+            </div>
+
+            <div class="form-group">
+                <label for="d">Disponible ? </label>
+                <select class="form-control" ng-model="Pdispo">
+                    <option>Oui</option>
+                    <option>Non</option>
+                </select>
+                <span class="help-block">choisir Oui si le produit est disponible {{Pdispo}}</span>
+            </div>
+            <button class="btn-primary" ng-click="Send();" ng-disabled="">Ajouter</button>
+        </div>
+    </form>
+</div>

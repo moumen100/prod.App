@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Products manager Page";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+
+<div ng-app="biblioApp" ng-controller="suppliersCtrl">
+    <a href="/Suppliers/AddProduct" id="link_newproduct">Add new product</a><br />
+    @*Il faut mettre toutes les divs dans une seul div qui utilise l'application Angularjs biblioApp  *@
+    @* Il faut spécifier le nom de l'application AngularJs que tu veux utiliser *@
+    @* tu peut également spécifier le nom du controlleur avec ng-controller="suppliersCtrl"
+        mais c'est pas nécessaire puisqu'on la déjà fait dans les règles de routage *@
+
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <th>Product Name</th>
+                <th>Details</th>
+                <th>Edition</th>
+                <th>Delete</th>
+            </tr>
+            
+            <tr ng-repeat="product in ProdList">
+                @* Le ng-repeat est dans le tr pas le td, car c'est la ligne tr qui vas se répeter :-) *@
+
+                <td>{{product.ProductName}}</td>
+                <td><a href="#" ng-click="show_details(product.Id);">Details</a></td>
+                
+                <td><a href="#" ng-click="Edit({Id: product.Id,ProductName: product.ProductName,UnitPrice: product.UnitPrice, UnitPrice: product.UnitPrice , dispo: product.IsDiscontinued});">Edit</a></td>
+                <td><a href="#" ng-click="Remove(product.Id);">Delete</a></td>
+                
+            </tr>
+
+        </table>
+    </div>
+
+</div>
